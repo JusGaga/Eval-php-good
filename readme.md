@@ -27,14 +27,13 @@ Nous avons eu quelques lignes directrices telles que:
 
 ---
 ## MCD du projet site adoption animaux
-![MCD](https://user-images.githubusercontent.com/59624625/155017995-54a91d45-33a2-48fa-91ff-d98fd919c08d.png)
+![MCD](https://user-images.githubusercontent.com/59624625/155018275-28d68dca-1857-49c8-8f94-de933c224899.png)
 
 
 
 ---
 ## MLD du projet site adoption animaux
-![MLD](https://user-images.githubusercontent.com/59624625/155018040-1719dc01-87c7-4908-a007-dc6cbc4ef9ae.png)
-
+![MLD](https://user-images.githubusercontent.com/59624625/155018339-65d096d3-6c50-45f5-89b0-5cf16455bbbb.png)
 
 ---
 
