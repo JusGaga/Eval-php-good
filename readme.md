@@ -27,13 +27,13 @@ Nous avons eu quelques lignes directrices telles que:
 
 ---
 ## MCD du projet site adoption animaux
-![MCD](https://i.imgur.com/JxsjlJU.png)
+![MCD](https://user-images.githubusercontent.com/59624625/155017995-54a91d45-33a2-48fa-91ff-d98fd919c08d.png)
 
 
 
 ---
 ## MLD du projet site adoption animaux
-![MLD](https://i.imgur.com/FLRnO34.png)
+![MLD](https://user-images.githubusercontent.com/59624625/155018040-1719dc01-87c7-4908-a007-dc6cbc4ef9ae.png)
 
 
 ---
@@ -50,17 +50,31 @@ Nous avons eu quelques lignes directrices telles que:
 #------------------------------------------------------------
 
 CREATE TABLE User(
-        id_us      Int  Auto_increment  NOT NULL ,
-        nom        Varchar (50) NOT NULL ,
-        prenom     Varchar (50) NOT NULL ,
-        email      Varchar (200) NOT NULL ,
-        password   Varchar (50) NOT NULL ,
-        adresse    Varchar (200) NOT NULL ,
-        adresse2   Varchar (200) NOT NULL ,
-        codePostal Int NOT NULL ,
-        tel        Int NOT NULL ,
-        role       Varchar (50) NOT NULL
+        id_us       Int  Auto_increment  NOT NULL ,
+        nom         Varchar (50) NOT NULL ,
+        prenom      Varchar (50) NOT NULL ,
+        email       Varchar (200) NOT NULL ,
+        password    Varchar (250) NOT NULL ,
+        adresse     Varchar (250) NOT NULL ,
+        adresse2    Varchar (250) NOT NULL ,
+        code_postal Int NOT NULL ,
+        telephone   Int NOT NULL
 	,CONSTRAINT User_PK PRIMARY KEY (id_us)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Produit
+#------------------------------------------------------------
+
+CREATE TABLE Produit(
+        id_b        Int  Auto_increment  NOT NULL ,
+        nom         Varchar (50) NOT NULL ,
+        description Text NOT NULL ,
+        img         Text NOT NULL ,
+        prix        Int NOT NULL ,
+        quantity    Int NOT NULL
+	,CONSTRAINT Produit_PK PRIMARY KEY (id_b)
 )ENGINE=InnoDB;
 
 
@@ -80,32 +94,32 @@ CREATE TABLE Especes(
 #------------------------------------------------------------
 
 CREATE TABLE Animal(
-        id_pet    Int  Auto_increment  NOT NULL ,
-        nom       Varchar (50) NOT NULL ,
-        naissance Date NOT NULL ,
-        photo     Text NOT NULL ,
-        des       Text NOT NULL ,
-        adopter   Bool NOT NULL ,
-        id_es     Int NOT NULL ,
-        id_us     Int
+        id_pet         Int  Auto_increment  NOT NULL ,
+        nom            Varchar (50) NOT NULL ,
+        date_naissance Date NOT NULL ,
+        photo          Text NOT NULL ,
+        description    Text NOT NULL ,
+        est_adopter    Bool NOT NULL ,
+        id_us          Int ,
+        id_es          Int NOT NULL
 	,CONSTRAINT Animal_PK PRIMARY KEY (id_pet)
 
-	,CONSTRAINT Animal_Especes_FK FOREIGN KEY (id_es) REFERENCES Especes(id_es)
-	,CONSTRAINT Animal_User0_FK FOREIGN KEY (id_us) REFERENCES User(id_us)
+	,CONSTRAINT Animal_User_FK FOREIGN KEY (id_us) REFERENCES User(id_us)
+	,CONSTRAINT Animal_Especes0_FK FOREIGN KEY (id_es) REFERENCES Especes(id_es)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Accessoires
+# Table: Races
 #------------------------------------------------------------
 
-CREATE TABLE Accessoires(
-        id_acc Int  Auto_increment  NOT NULL ,
-        nom    Varchar (50) NOT NULL ,
-        des    Varchar (50) NOT NULL ,
-        img    Text NOT NULL ,
-        prix   Int NOT NULL
-	,CONSTRAINT Accessoires_PK PRIMARY KEY (id_acc)
+CREATE TABLE Races(
+        id_race Int  Auto_increment  NOT NULL ,
+        nom     Varchar (50) NOT NULL ,
+        id_es   Int
+	,CONSTRAINT Races_PK PRIMARY KEY (id_race)
+
+	,CONSTRAINT Races_Especes_FK FOREIGN KEY (id_es) REFERENCES Especes(id_es)
 )ENGINE=InnoDB;
 
 
@@ -114,11 +128,26 @@ CREATE TABLE Accessoires(
 #------------------------------------------------------------
 
 CREATE TABLE Achat(
-        id_acc Int NOT NULL ,
-        id_us  Int NOT NULL
-	,CONSTRAINT Achat_PK PRIMARY KEY (id_acc,id_us)
+        id_b  Int NOT NULL ,
+        id_us Int NOT NULL
+	,CONSTRAINT Achat_PK PRIMARY KEY (id_b,id_us)
 
-	,CONSTRAINT Achat_Accessoires_FK FOREIGN KEY (id_acc) REFERENCES Accessoires(id_acc)
+	,CONSTRAINT Achat_Produit_FK FOREIGN KEY (id_b) REFERENCES Produit(id_b)
 	,CONSTRAINT Achat_User0_FK FOREIGN KEY (id_us) REFERENCES User(id_us)
 )ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: est2
+#------------------------------------------------------------
+
+CREATE TABLE est2(
+        id_race Int NOT NULL ,
+        id_pet  Int NOT NULL
+	,CONSTRAINT est2_PK PRIMARY KEY (id_race,id_pet)
+
+	,CONSTRAINT est2_Races_FK FOREIGN KEY (id_race) REFERENCES Races(id_race)
+	,CONSTRAINT est2_Animal0_FK FOREIGN KEY (id_pet) REFERENCES Animal(id_pet)
+)ENGINE=InnoDB;
+
 ```
