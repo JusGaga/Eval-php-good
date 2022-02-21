@@ -27,18 +27,18 @@ Nous avons eu quelques lignes directrices telles que:
 
 ---
 ## MCD du projet site adoption animaux
-![MCD](https://user-images.githubusercontent.com/59624625/155018275-28d68dca-1857-49c8-8f94-de933c224899.png)
+![MCD](public/img/MCD.png)
 
 
 
 ---
 ## MLD du projet site adoption animaux
-![MLD](https://user-images.githubusercontent.com/59624625/155018339-65d096d3-6c50-45f5-89b0-5cf16455bbbb.png)
+![MLD](public/img/MLD.png)
 
 ---
 
 ## Script Base de données
-```sql=
+```sql
 #------------------------------------------------------------
 #        Script MySQL.
 #------------------------------------------------------------
@@ -57,7 +57,7 @@ CREATE TABLE User(
         adresse     Varchar (250) NOT NULL ,
         adresse2    Varchar (250) NOT NULL ,
         code_postal Int NOT NULL ,
-        telephone   Int NOT NULL ,
+        telephone   BigInt NOT NULL ,
         role        Varchar (50) NOT NULL
 	,CONSTRAINT User_PK PRIMARY KEY (id_us)
 )ENGINE=InnoDB;
@@ -149,6 +149,4 @@ CREATE TABLE est2(
 	,CONSTRAINT est2_Races_FK FOREIGN KEY (id_race) REFERENCES Races(id_race)
 	,CONSTRAINT est2_Animal0_FK FOREIGN KEY (id_pet) REFERENCES Animal(id_pet)
 )ENGINE=InnoDB;
-
-
 ```
