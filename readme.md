@@ -57,7 +57,8 @@ CREATE TABLE User(
         adresse     Varchar (250) NOT NULL ,
         adresse2    Varchar (250) NOT NULL ,
         code_postal Int NOT NULL ,
-        telephone   Int NOT NULL
+        telephone   Int NOT NULL ,
+        role        Varchar (50) NOT NULL
 	,CONSTRAINT User_PK PRIMARY KEY (id_us)
 )ENGINE=InnoDB;
 
@@ -148,5 +149,6 @@ CREATE TABLE est2(
 	,CONSTRAINT est2_Races_FK FOREIGN KEY (id_race) REFERENCES Races(id_race)
 	,CONSTRAINT est2_Animal0_FK FOREIGN KEY (id_pet) REFERENCES Animal(id_pet)
 )ENGINE=InnoDB;
+
 
 ```
