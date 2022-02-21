@@ -11,11 +11,9 @@ $content = trim(file_get_contents("php://input"));
 $data = json_decode($content, true);
 
 if(isset($_GET["register"])){
-    if($userClass ->verifyUser($data) === null){
-        $userClass -> register($data);
-    };
-
+    $userClass -> register($data);
     echo json_encode($data);
+    header("Location:/");
 }else if(isset($_GET["login"])){
     $user = $userClass->verifyUser($data);
     $password = $data['password'];
@@ -37,7 +35,14 @@ if(isset($_GET["register"])){
     unset($_SESSION);
     header('Location:/');
 }else if(isset($_GET['user'])){
-
     $profileUser = $userClass -> getprofile($_SESSION["user"]['id']);
     include_once "../View/Profile.php";
+}else if(isset($_GET['edit'])){
+    $UserInfo = $userClass -> getprofile($_SESSION['user']['id']);
+    include_once '../View/ProfileEdit.php';
+
+}else if(isset($_GET["update"])){
+    $userClass -> updateProfile($data);
+    echo json_encode($data);
+
 }

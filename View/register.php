@@ -49,6 +49,8 @@
             if(!response.ok){
                 document.querySelector(".alert-danger").style.display = "block";
                 document.querySelector(".alert-danger").textContent = "Il y a eu un soucis";
+            }else{
+                window.location = "/"
             }
         })
 
