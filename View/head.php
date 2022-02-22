@@ -16,4 +16,10 @@
     <link rel="stylesheet" href="../View/Styles/Index.css">
 </head>
 <body>
-<?php require_once "navbar.php"; ?>
+
+<?php
+$url = strtok($_SERVER["REQUEST_URI"], '?');
+
+if($url !== "/Controller/AdminController.php" && $_SERVER["REQUEST_URI"] !== "/Controller/NavigationController.php?admin"){
+    require_once "navbar.php";
+}?>

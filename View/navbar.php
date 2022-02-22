@@ -28,7 +28,7 @@
                       <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                           <li>
                               <?php if($_SESSION["user"]["role"] === "admin") :?>
-                                  <a href="../Controller/AdminController.php" class="dropdown-item"><i class="fa-solid fa-screwdriver-wrench"></i> Panel admin</a>
+                                  <a href="../Controller/NavigationController.php?admin" class="dropdown-item"><i class="fa-solid fa-screwdriver-wrench"></i> Panel admin</a>
                               <?php endif; ?>
                           </li>
                           <li><a href="../Controller/UserController.php?user" class="dropdown-item"><i class="fa-solid fa-user"></i> Profile</a></li>
