@@ -12,20 +12,30 @@
             <p class="mx-3">Prénom : <?= $profileUser['prenom']?></p>
             <p class="mx-3">Email : <?= $profileUser['email']?></p>
             <p class="mx-3">Adresse : <?= $profileUser['adresse']." ".$profileUser["adresse2"]?></p>
-            <p class="mx-3">Code Postal : <?= $profileUser['codePostal']?></p>
-            <p class="mx-3">Tel : <?= $profileUser['tel']?></p>
+            <p class="mx-3">Code Postal : <?= $profileUser['code_postal']?></p>
+            <p class="mx-3">Tel : <?= $profileUser['telephone']?></p>
             <p class="mx-3">Role : <?= $profileUser['role']?></p>
         </div>
     </div>
     <div class="col-8 px-2">
         <div class="h-50">
             <h5>Vos différentes adoptions :</h5>
+            <div id="adoptions">
+
+            </div>
         </div>
         <div class="h-50">
             <h5>Vos différents achats :</h5>
+            <div id="achats">
+
+            </div>
         </div>
     </div>
 </div>
 
+
+<scrip>
+
+</scrip>
 
 <?php require_once "footer.php";?>
